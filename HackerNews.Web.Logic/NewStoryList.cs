@@ -30,7 +30,7 @@ namespace HackerNews.Web.Logic
 
             foreach(var id in idList)
             {
-                var story = GetStory(id);
+                var story = GetStoryById(id);
                 storyList.Add(story);
             }
 
@@ -40,7 +40,12 @@ namespace HackerNews.Web.Logic
 
         #region PrivateMethods
 
-        private Story GetStory(int id)
+        /// <summary>
+        /// Retrieves the specified story by the ID
+        /// </summary>
+        /// <param name="id">The id of the story to retrieve.</param>
+        /// <returns>A <see cref="Story"/>object representing the story.</returns>
+        private Story GetStoryById(int id)
         {
             var story = _newStoriesRepository.GetStoryById(id).GetAwaiter().GetResult();
             return story;
