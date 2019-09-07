@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HackerNews.Repository.Entities;
 
 namespace HackerNews.Web.Logic.Interfaces
 {
@@ -11,7 +12,7 @@ namespace HackerNews.Web.Logic.Interfaces
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>A list of new stories.</returns>
-        List<int> GetNewStoryList(int? limitTo = null);
+        List<Story> GetNewStoryList(int? limitTo = null);
 
     }
 }

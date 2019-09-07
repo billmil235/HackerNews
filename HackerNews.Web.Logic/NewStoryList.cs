@@ -22,7 +22,7 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>A list of new stories.</returns>
-        public List<int> GetNewStoryList(int? limitTo = null)
+        public List<Story> GetNewStoryList(int? limitTo = null)
         {
 
             var storyList = new List<Story>();
@@ -34,7 +34,7 @@ namespace HackerNews.Web.Logic
                 storyList.Add(story);
             }
 
-            return idList.ToList();
+            return storyList;
 
         }
 
