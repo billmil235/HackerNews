@@ -25,4 +25,10 @@
     <ProjectReference Include="..\HackerNews.Repository.Entities\HackerNews.Repository.Entities.csproj" />
     <ProjectReference Include="..\HackerNews.Web.Logic\HackerNews.Web.Logic.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\About.cshtml" />
+    <Content Remove="Views\Home\Contact.cshtml" />
+    <Content Remove="Views\Home\Privacy.cshtml" />
+    <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
+  </ItemGroup>
 </Project>
