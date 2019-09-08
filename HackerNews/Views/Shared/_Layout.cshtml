@@ -16,7 +16,7 @@
             <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         </environment>
     </head>
-    <body>
+    <body ng-controller="HackerNewsAPIController">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -29,7 +29,16 @@
                     <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">HackerNews</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"></ul>
+                    <div class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <select class="form-control" id="storyCount" ng-model="storyCount" ng-change="getStories()">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="0">Max</option>
+                            </select>
+                            <button class="form-control btn btn-default" id="refreshStories" ng-click="getStories()">Get Latest</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

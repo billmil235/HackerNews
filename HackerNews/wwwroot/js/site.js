@@ -1,35 +1,46 @@
 ﻿var app = angular.module('HackerNewsAPIApp', []);
 
-app.controller('HackerNewsAPIController', function HackerNewsAPIController($scope) {
+app.controller('HackerNewsAPIController', function HackerNewsAPIController($scope, $http) {
 
-    var self = this;
-    self.stories = [];
+    SpinnerOff();
+
+    $scope.storyList = [];
+    $scope.storyCount = '20';
+
+    $scope.getStories = function () {
+
+        SpinnerOn();
+
+        var url = "/api/NewStories";
+
+        if ($scope.storyCount != '0') {
+            url += "/" + $scope.storyCount;
+        }
+
+        console.log(url);
+
+        $http.get(url)
+            .then(function (stories) {
+                $scope.storyList = stories.data;
+                return;
+            }, function (error) {
+                alert("An error has occurred retrieving the stories.");
+            })
+            .then(function () {
+                // Complete
+                SpinnerOff();
+            });
+
+    };
+
+    $scope.getStories();
 
 });
 
-app.component('hackerNewsStories', {
-    template: "",
-    controller: function HackerNewsStoriesController($http) {
+function SpinnerOn() {
+    $('#spinner').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+}
 
-        var ctrl = this;
-        
-        ctrl.getStories = function () {
-
-            var url = "/api/NewStories";
-
-            $http.get(url)
-                .then(function (stories) {
-                    return;
-                }, function (error) {
-                    alert("An error has occurred retrieving the stories.");
-                })
-                .then(function () {
-                    // Complete
-                });
-
-        };
-
-        ctrl.getStories();
-
-    }
-});
+function SpinnerOff() {
+    $('#spinner').html('');
+}

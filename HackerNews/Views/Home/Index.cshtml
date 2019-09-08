@@ -2,13 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container" ng-controller="HackerNewsAPIController">
+<div class="container">
     <div class="row">
         <h1>Newest Stories</h1>
     </div>
+
+    <div class="col-12 text-primary" id="spinner"></div>
+
     <div class="row" style="height: 700px">
 
-        <hacker-news-stories></hacker-news-stories>
+        <ul class="list-group">
+            <li ng-repeat="story in storyList" class="list-group-item">
+                <span class="badge">{{story.score}}</span><h4><span>{{story.title}}</span></h4>
+                <span>Posted By: {{story.by}}</span>
+            </li>
+        </ul>
 
     </div>
+
 </div>

@@ -30,7 +30,7 @@ namespace HackerNews.Web.Controllers.api
             return newStoryList;
         }
 
-        // GET: api/NewStories?limitTo=10
+        // GET: api/NewStories/10
         [HttpGet("{limitTo}")]
         public List<Story> Get(int limitTo)
         {
