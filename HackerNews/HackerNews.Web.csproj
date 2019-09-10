@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\api\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HackerNews.Repository\HackerNews.Repository.csproj" />
@@ -29,6 +30,8 @@
     <Content Remove="Views\Home\Contact.cshtml" />
     <Content Remove="Views\Home\Privacy.cshtml" />
     <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Remove="wwwroot\images\banner1.svg" />
+    <Content Remove="wwwroot\images\banner2.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\Story.cs" />
