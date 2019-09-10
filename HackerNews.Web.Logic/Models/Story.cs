@@ -14,6 +14,8 @@ namespace HackerNews.Web.Logic.Models
         public string Title { get; set; }
         public string URL { get; set; }
 
+        public string Domain { get; set; }
+
         public DateTime PostTime { get; set; }
 
     }

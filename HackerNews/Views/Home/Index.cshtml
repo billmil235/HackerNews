@@ -13,7 +13,8 @@
 
         <ul class="list-group">
             <li ng-repeat="story in storyList" class="list-group-item">
-                <span class="badge">{{story.score}}</span><h4><span><a ng-href="{{story.url}}" target="_blank">{{story.title}}</a></span></h4>
+                <span class="badge">{{story.score}}</span>
+                <h4><a ng-href="{{story.url}}" target="_blank">{{story.title}}</a></h4><h6>{{story.domain}}</h6>
                 <span>Posted By: {{story.author}} at {{story.postTime}}</span>
             </li>
         </ul>

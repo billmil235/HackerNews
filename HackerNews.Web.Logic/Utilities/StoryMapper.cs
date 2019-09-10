@@ -19,7 +19,8 @@ namespace HackerNews.Web.Logic.Utilities
                 PostTime = GetDotNetTimeFromUnixTime(story.time),
                 Score = story.score,
                 Title = story.title,
-                URL = story.url
+                URL = story.url,
+                Domain = GetDomainFromURI(story.url)
             };
 
         }
@@ -27,6 +28,15 @@ namespace HackerNews.Web.Logic.Utilities
         public DateTime GetDotNetTimeFromUnixTime(int time)
         {
             return new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).AddSeconds(time);
+        }
+
+        public string GetDomainFromURI(string uri)
+        {
+
+            Uri myUri = new Uri(uri);
+            string host = myUri.Host;
+            return host;
+
         }
 
     }
