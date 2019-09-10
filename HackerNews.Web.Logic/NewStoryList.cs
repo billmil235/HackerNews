@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HackerNews.Repository.Entities;
-using HackerNews.Repository.Interfaces;
 using HackerNews.Web.Logic.Interfaces;
+using HackerNews.Web.Logic.Models;
+using HackerNews.Repository.Interfaces;
+using HackerNews.Repository.Entities;
+using HackerNews.Web.Logic.Utilities;
 
 namespace HackerNews.Web.Logic
 {
@@ -11,10 +13,12 @@ namespace HackerNews.Web.Logic
     {
 
         public INewStoriesRepository _newStoriesRepository;
+        public IStoryMapper _storyMapper;
 
-        public NewStoryList(INewStoriesRepository newStoriesRepository)
+        public NewStoryList(INewStoriesRepository newStoriesRepository, IStoryMapper storyMapper)
         {
             _newStoriesRepository = newStoriesRepository;
+            _storyMapper = storyMapper;
         }
 
         /// <summary>
@@ -22,16 +26,16 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>A list of new stories.</returns>
-        public List<Story> GetNewStoryList(int? limitTo = null)
+        public List<Models.Story> GetNewStoryList(int? limitTo = null)
         {
 
-            var storyList = new List<Story>();
+            var storyList = new List<Models.Story>();
             var idList = GetNewStoryIdList(limitTo);
 
             foreach(var id in idList)
             {
                 var story = GetStoryById(id);
-                storyList.Add(story);
+                storyList.Add(_storyMapper.MapStory(story));
             }
 
             return storyList;
@@ -45,7 +49,7 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="id">The id of the story to retrieve.</param>
         /// <returns>A <see cref="Story"/>object representing the story.</returns>
-        private Story GetStoryById(int id)
+        private Repository.Entities.Story GetStoryById(int id)
         {
             var story = _newStoriesRepository.GetStoryById(id).GetAwaiter().GetResult();
             return story;

@@ -12,4 +12,9 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HackerNews.Repository\HackerNews.Repository.csproj" />
+    <ProjectReference Include="..\HackerNews.Repository.Entities\HackerNews.Repository.Entities.csproj" />
+    <ProjectReference Include="..\HackerNews.Web.Logic\HackerNews.Web.Logic.csproj" />
+  </ItemGroup>
 </Project>

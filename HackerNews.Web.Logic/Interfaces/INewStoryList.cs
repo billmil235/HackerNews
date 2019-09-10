@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using HackerNews.Repository.Entities;
+using HackerNews.Web.Logic.Models;
 
 namespace HackerNews.Web.Logic.Interfaces
 {

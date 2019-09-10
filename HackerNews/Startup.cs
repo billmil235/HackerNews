@@ -13,6 +13,7 @@ using HackerNews.Repository;
 using HackerNews.Repository.Interfaces;
 using HackerNews.Web.Logic.Interfaces;
 using HackerNews.Web.Logic;
+using HackerNews.Web.Logic.Utilities;
 
 namespace HackerNews
 {
@@ -38,6 +39,7 @@ namespace HackerNews
 
             services.AddScoped<INewStoriesRepository, NewStoriesRepository>();
             services.AddScoped<INewStoryList, NewStoryList>();
+            services.AddSingleton<IStoryMapper, StoryMapper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

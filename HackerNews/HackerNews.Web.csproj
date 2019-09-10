@@ -13,7 +13,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="jQuery" Version="3.4.1" />
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
 
@@ -30,5 +29,8 @@
     <Content Remove="Views\Home\Contact.cshtml" />
     <Content Remove="Views\Home\Privacy.cshtml" />
     <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\Story.cs" />
   </ItemGroup>
 </Project>
