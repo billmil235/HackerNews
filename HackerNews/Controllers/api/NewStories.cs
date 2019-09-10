@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using HackerNews.Repository.Interfaces;
 using HackerNews.Web.Logic.Interfaces;
@@ -24,18 +25,36 @@ namespace HackerNews.Web.Controllers.api
 
         // GET: api/NewStories
         [HttpGet]
-        public List<Story> Get()
+        public IActionResult Get()
         {
-            var newStoryList = _newStoryList.GetNewStoryList(null);
-            return newStoryList;
+
+            try
+            {
+                var newStoryList = _newStoryList.GetNewStoryList(null);
+                return Ok(newStoryList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         // GET: api/NewStories/10
         [HttpGet("{limitTo}")]
-        public List<Story> Get(int limitTo)
+        public IActionResult Get(int limitTo)
         {
-            var newStoryList = _newStoryList.GetNewStoryList(limitTo);
-            return newStoryList;
+
+            try
+            {
+                var newStoryList = _newStoryList.GetNewStoryList(limitTo);
+                return Ok(newStoryList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
     }

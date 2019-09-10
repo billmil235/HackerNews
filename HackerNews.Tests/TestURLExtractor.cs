@@ -12,6 +12,7 @@ namespace HackerNews.Tests
 
         [Theory]
         [InlineData("https://protonmail.com/blog/security-updates-2019/", "protonmail.com")]
+        [InlineData(null, "")]
         public void TestURLExtraction(string url, string expected)
         {
 
