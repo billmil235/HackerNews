@@ -25,12 +25,12 @@ namespace HackerNews.Web.Controllers.api
 
         // GET: api/NewStories
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync()
         {
 
             try
             {
-                var newStoryList = _newStoryList.GetNewStoryList(null);
+                var newStoryList = await _newStoryList.GetNewStoryListAsync(null);
                 return Ok(newStoryList);
             }
             catch (Exception ex)
@@ -42,12 +42,12 @@ namespace HackerNews.Web.Controllers.api
 
         // GET: api/NewStories/10
         [HttpGet("{limitTo}")]
-        public IActionResult Get(int limitTo)
+        public async Task<IActionResult> GetAsync(int limitTo)
         {
 
             try
             {
-                var newStoryList = _newStoryList.GetNewStoryList(limitTo);
+                var newStoryList = await _newStoryList.GetNewStoryListAsync(limitTo);
                 return Ok(newStoryList);
             }
             catch (Exception ex)

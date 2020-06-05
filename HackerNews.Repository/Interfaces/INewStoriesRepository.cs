@@ -12,7 +12,7 @@ namespace HackerNews.Repository.Interfaces
         /// Used to retrieve the list of all stories returned by the /newstories API call.
         /// </summary>
         /// <returns>A task associated with the API request.</returns>
-        Task<IEnumerable<int>> GetNewStoryIdList();
+        Task<IEnumerable<int>> GetNewStoryIdListAsync();
 
         Task<Story> GetStoryById(int id);
 

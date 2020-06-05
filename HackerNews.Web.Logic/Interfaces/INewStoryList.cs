@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HackerNews.Web.Logic.Models;
 
 namespace HackerNews.Web.Logic.Interfaces
@@ -12,7 +13,7 @@ namespace HackerNews.Web.Logic.Interfaces
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>A list of new stories.</returns>
-        List<Story> GetNewStoryList(int? limitTo = null);
+        Task<List<Story>> GetNewStoryListAsync(int? limitTo = null);
 
     }
 }

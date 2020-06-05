@@ -6,6 +6,7 @@ using HackerNews.Web.Logic.Models;
 using HackerNews.Repository.Interfaces;
 using HackerNews.Repository.Entities;
 using HackerNews.Web.Logic.Utilities;
+using System.Threading.Tasks;
 
 namespace HackerNews.Web.Logic
 {
@@ -26,15 +27,15 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>A list of new stories.</returns>
-        public List<Models.Story> GetNewStoryList(int? limitTo = null)
+        public async Task<List<Models.Story>> GetNewStoryListAsync(int? limitTo = null)
         {
 
             var storyList = new List<Models.Story>();
-            var idList = GetNewStoryIdList(limitTo);
+            var idList = await GetNewStoryIdListAsync(limitTo);
 
             foreach(var id in idList)
             {
-                var story = GetStoryById(id);
+                var story = await GetStoryByIdAsync(id);
                 storyList.Add(_storyMapper.MapStory(story));
             }
 
@@ -49,9 +50,9 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="id">The id of the story to retrieve.</param>
         /// <returns>A <see cref="Story"/>object representing the story.</returns>
-        private Repository.Entities.Story GetStoryById(int id)
+        private async Task<Repository.Entities.Story> GetStoryByIdAsync(int id)
         {
-            var story = _newStoriesRepository.GetStoryById(id).GetAwaiter().GetResult();
+            var story = await _newStoriesRepository.GetStoryById(id);
             return story;
         }
 
@@ -60,9 +61,9 @@ namespace HackerNews.Web.Logic
         /// </summary>
         /// <param name="limitTo">Limits the number of stories returned.</param>
         /// <returns>An list of IDs for new stories.</returns>
-        private IEnumerable<int> GetNewStoryIdList(int? limitTo = null)
+        private async System.Threading.Tasks.Task<IEnumerable<int>> GetNewStoryIdListAsync(int? limitTo = null)
         {
-            var idList = _newStoriesRepository.GetNewStoryIdList().GetAwaiter().GetResult();
+            var idList = await _newStoriesRepository.GetNewStoryIdListAsync();
 
             if (limitTo.HasValue)
             {

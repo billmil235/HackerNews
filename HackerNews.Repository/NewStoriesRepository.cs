@@ -24,7 +24,7 @@ namespace HackerNews.Repository
         /// Used to retrieve the list of all stories returned by the /newstories API call.
         /// </summary>
         /// <returns>A task associated with the API request.</returns>
-        public async Task<IEnumerable<int>> GetNewStoryIdList()
+        public async Task<IEnumerable<int>> GetNewStoryIdListAsync()
         {
 
             var path = "https://hacker-news.firebaseio.com/v0/newstories.json";
