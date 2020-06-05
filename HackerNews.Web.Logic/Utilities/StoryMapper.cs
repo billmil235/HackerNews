@@ -1,6 +1,4 @@
 ﻿using System;
-using HackerNews.Web.Logic.Models;
-using HackerNews.Repository.Entities;
 
 namespace HackerNews.Web.Logic.Utilities
 {

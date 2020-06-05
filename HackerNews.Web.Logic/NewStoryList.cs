@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using HackerNews.Repository.Entities;
+using HackerNews.Repository.Interfaces;
 using HackerNews.Web.Logic.Interfaces;
 using HackerNews.Web.Logic.Models;
-using HackerNews.Repository.Interfaces;
-using HackerNews.Repository.Entities;
 using HackerNews.Web.Logic.Utilities;
-using System.Threading.Tasks;
 
 namespace HackerNews.Web.Logic
 {

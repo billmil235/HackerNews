@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using HackerNews.Repository.Entities;
 
@@ -14,6 +13,11 @@ namespace HackerNews.Repository.Interfaces
         /// <returns>A task associated with the API request.</returns>
         Task<IEnumerable<int>> GetNewStoryIdListAsync();
 
+        /// <summary>
+        /// Used to retrieve a specific story based on its ID number.
+        /// </summary>
+        /// <param name="id">The ID of the story to retrieve.</param>
+        /// <returns>A <see cref="Story"/> object.</returns>
         Task<Story> GetStoryById(int id);
 
     }
